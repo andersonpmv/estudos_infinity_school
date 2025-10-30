@@ -1,0 +1,1078 @@
+/* ======== GERAL ======== */
+body {
+  margin: 0;
+  background-color: #0a0a0a;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+.logo_cursos{
+  height: 60px;
+  width: auto;
+}
+
+main, section, .conteudo-principal {
+  position: relative;
+  z-index: 1;             /* abaixo do menu */
+  margin: 0;              /* evita deslocamento */
+  transition: filter 0.3s ease;
+}
+
+/* quando o menu está aberto, escurece o fundo */
+body.menu-ativo main,
+body.menu-ativo section,
+body.menu-ativo .conteudo-principal {
+  filter: blur(3px) brightness(0.6);
+  pointer-events: none; /* evita clicar no conteúdo ao fundo */
+}
+
+/* ======== TOPO ======== */
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  width: 100%;
+  height: 120px;
+  background-image: url("images/logo2.jpeg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative; /* essencial para o absolute funcionar */
+  z-index: 1000;
+  margin-top: 20px;
+}
+
+/* ======== BOTÃO HAMBÚRGUER ======== */
+.menu-btn {
+  font-size: 32px;
+  color: #ff002b;
+  cursor: pointer;
+  transition: transform 0.3s, text-shadow 0.3s, color 0.3s;
+  text-shadow: 0 0 10px #ff002b, 0 0 20px #b30000;
+  z-index: 10;
+}
+.menu-btn:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 15px #ff002b, 0 0 30px #ff0040;
+  
+}
+
+/* ======== BOTÃO ANIMADO QUANDO MENU ABRE ======== */
+.menu-btn.ativo {
+  transform: rotate(90deg) scale(1.1);
+  color: #ff0040;
+  text-shadow: 0 0 20px #ff0040, 0 0 40px #b30000;
+}
+
+/* ======== LOGO AO LADO ======== */
+.logo-hamburguer {
+  position: relative;
+  flex: 1;
+  height: 120px;
+  background-image: url("images/logo2.jpeg");
+  background-size: cover;
+  background-position: center;
+   width: 400px; /* ajuste conforme necessário */
+  height: 80px;
+}
+
+
+
+/* ======== MENU LATERAL ======== */
+.menu-lateral {
+  position: fixed;         /* fixa na tela */
+  left: -270px;            /* começa fora da tela */
+  top: 0;                  /* ajustado ao topo */
+  width: 270px;
+  height: 100vh;
+  background: linear-gradient(180deg, #000 0%, #1a0000 100%);
+  box-shadow: 5px 0 20px rgba(255, 0, 0, 0.3);
+  padding-top: 100px;
+  transition: left 0.4s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  z-index: 2000;           /* acima de tudo */
+  overflow-y: auto;
+}
+
+.menu-lateral.ativo {
+  left: 0;
+}
+
+/* ======== LINKS DO MENU ======== */
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-lateral ul li {
+  margin: 10px 0;
+}
+
+.menu-lateral ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+  padding: 12px 25px;
+  border-left: 3px solid transparent;
+  transition: 0.3s;
+  position: relative;
+}
+
+/* Submenu escondido por padrão */
+.menu-lateral ul li ul {
+  display: none;
+  list-style: none;
+  padding-left: 20px; /* recuo visual */
+  margin-top: 5px;
+}
+
+/* Quando passar o mouse sobre o item principal */
+.menu-lateral ul li.submenu:hover > ul {
+  display: block;
+}
+
+/* Estilo dos links dentro do submenu */
+.menu-lateral ul li ul li a {
+  font-size: 16px;
+  color: #ccc;
+  padding: 8px 20px;
+  border-left: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.menu-lateral ul li ul li a:hover {
+  color: #ff002b;
+  text-shadow: 0 0 10px #ff002b;
+  border-left: 2px solid #ff002b;
+  transform: translateX(5px);
+}
+
+
+/* EFEITO DE BRILHO NEON NOS LINKS */
+.menu-lateral ul li a:hover {
+  color: #ff002b;
+  text-shadow: 0 0 10px #ff002b, 0 0 20px #ff0040;
+  border-left: 3px solid #ff002b;
+  transform: translateX(8px);
+}
+
+/* ======== botoes do header ======== */
+
+.header-buttons {
+  position: absolute;   /* sobre a imagem */
+  top: 50%;             /* centralizado verticalmente */
+  right: 20px;          /* distância da borda direita */
+  transform: translateY(-50%); /* centraliza verticalmente */
+  display: flex;
+  gap: 10px;
+  z-index: 10;          /* acima da imagem */
+}
+
+
+.header-buttons button {
+  background-color: #4B0082;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.header-buttons button:hover {
+  background-color: #4c00828f;
+}
+
+/* Dropdown container */
+.corp-dropdown, .disc-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Conteúdo do dropdown escondido */
+.corp-dropdown .dropdown-content,
+.disc-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0; /* alinha à direita do botão */
+  background-color: #4B0082;
+  min-width: 140px;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 100;
+  flex-direction: column;
+}
+
+/* Links do dropdown */
+.dropdown-content a {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+}
+
+.dropdown-content a:hover {
+  background-color: #4c00828f;
+}
+
+/* Mostrar dropdown ao passar o mouse (hover) */
+.corp-dropdown:hover .dropdown-content,
+.disc-dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+
+
+
+/* ======== CONTEÚDO PRINCIPAL ======== */
+main {
+  padding: 120px 40px;
+  transition: margin-left 0.4s;
+}
+
+main h1 {
+    padding: 40px 0;
+    text-align: center; /* centraliza horizontalmente */
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+.menu-lateral.ativo ~ main {
+  margin-left: 270px;
+}
+
+.img-topo-site{
+    text-align: center;
+}
+
+/* ======== section HERO ======== */
+/* ======== HERO BASE ======== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+  transition: filter 0.5s ease;
+}
+
+/* ======== CONTEÚDO ======== */
+/* ======== HERO BASE ======== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  cursor: pointer;
+  
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+  transition: filter 0.5s ease;
+}
+
+/* ======== CONTEÚDO ======== */
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  animation: fadeInHero 2s ease forwards;
+  animation-delay: 1s; /* espera 1s antes de aparecer */
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  color: #00FFFF;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #eee;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-btn {
+  display: inline-block;
+  background-color: #00ffffb5;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  background: #00ffff82;
+  transform: scale(1.05);
+}
+
+html {
+  scroll-behavior: smooth; /* Faz o scroll suave */
+}
+
+/* ======== AO PASSAR O MOUSE ======== */
+.hero:hover .hero-video {
+  filter: brightness(25%);
+}
+
+.hero:hover .hero-content {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* ======== ANIMAÇÃO DE APARECIMENTO ======== */
+@keyframes fadeInHero {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+
+
+
+/* ======== Section Cursos ======== */
+
+section.cursos_infinity {
+  padding: 40px 4%;
+  background: linear-gradient(90deg, #000, #1a1a1a);
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  margin-top: 40px;
+}
+
+.titulo_cursos {
+  text-align: center;
+  font-size: 32px;
+  font-family: 'Orbitron', sans-serif;
+  color: #4B0082;
+  margin-bottom: 30px;
+}
+
+.carousel-wrapper {
+  position: relative;
+}
+
+.cursos_in {
+  display: flex;
+  gap: 40px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 20px;
+}
+
+.cursos_in::-webkit-scrollbar {
+  height: 8px;
+}
+.cursos_in::-webkit-scrollbar-thumb {
+  background-color: #4B0082;
+  border-radius: 10px;
+}
+.cursos_in::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cursos_box {
+  flex: 0 0 300px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  transition: .3s;
+}
+
+.cursos_box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px #ffffff78;
+}
+
+.logo_cursos {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  
+  margin-bottom: 15px;
+  
+}
+
+.cursos_box h3 {
+  font-size: 22px;
+  margin: 15px 0;
+  color: #00FFFF;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.cursos_box p {
+  font-size: 15px;
+  color: #ddd;
+  line-height: 1.4em;
+}
+
+/* Botões de navegação */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #FF0000;
+  color: #fff;
+  border: none;
+  font-size: 36px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carousel-wrapper:hover .carousel-btn {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.carousel-btn:hover {
+  background: #FF0000;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+  left: 0;
+}
+
+.carousel-btn.next {
+  right: 0;
+}
+
+
+/* ======== SEÇÃO SOBRE ======== */
+.sobre_multiverso {
+  background-image: url("../../../images/imagem-sobre-main-3.png");
+  color: #fff;
+  text-align: center;
+  padding: 100px 8%;
+  position: relative;
+  overflow: hidden;
+  margin-top: 40px;
+}
+
+/* ======== TÍTULO ======== */
+.sobre_multiverso h1 {
+  font-size: 3rem;
+  color: #FF00FF;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  position: relative;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+/* ======== PARÁGRAFO ======== */
+.sobre_multiverso p {
+  font-size: 1.2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: #ddd;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+/* ======== EFEITO AO PASSAR O MOUSE ======== */
+.sobre_multiverso:hover p {
+  opacity: 1;
+}
+
+/* ======== ANIMAÇÃO DE BRILHO NO TÍTULO ======== */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5),
+                 0 0 20px rgba(255, 0, 0, 0.4);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8),
+                 0 0 40px rgba(255, 0, 0, 0.6);
+  }
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 768px) {
+  .sobre_multiverso {
+    padding: 80px 5%;
+  }
+
+  .sobre_multiverso h1 {
+    font-size: 2.2rem;
+  }
+
+  .sobre_multiverso p {
+    font-size: 1rem;
+  }
+}
+
+
+/* ======== Section multiversos ======== */
+
+.multiversos {
+  background-color: #0a0a0a;
+  color: white;
+  padding: 80px 5%;
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+}
+
+.multiversos h1 {
+  font-size: 2.5em;
+  color: #FF00FF;
+  text-shadow: 0 0 10px #ff002b, 0 0 30px #ff0040;
+  margin-bottom: 40px;
+}
+
+.multiversos-conteudo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+
+/* ===== BOTOES ===== */
+.multiversos-botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  align-items: flex-start;
+}
+
+.btn {
+  background: transparent;
+  border: 2px solid #4B0082;
+  color: #FF00FF;
+  padding: 12px 30px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 100%;
+  text-align: left;
+}
+
+.btn:hover {
+  background-color: #4B0082;
+  color: #fff;
+  box-shadow: 0 0 15px #4B0082, 0 0 30px #4B0082;
+  transform: scale(1.05);
+}
+
+
+/* ===== TEXTO ===== */
+.multiversos-descricao {
+  flex: 2;
+  text-align: center;
+  font-size: 1.1em;
+  color: #ff0040 !important;
+  line-height: 1.6;
+  min-height: 100px;
+  transition: color 0.3s ease;
+}
+
+/* ===== IMAGEM ===== */
+.multiversos-imagem {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview {
+  width: 100%;
+  height: 250px;
+  background-color: #1a0000;
+  border: 2px dashed #FF00FF;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FF00FF;
+  font-size: 1.1em;
+  box-shadow: 0 0 20px #FF00FF;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 900px) {
+  .multiversos-conteudo {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .multiversos-botoes {
+    align-items: center;
+  }
+
+  .btn {
+    width: auto;
+    text-align: center;
+  }
+
+  .multiversos-imagem {
+    width: 80%;
+  }
+}
+
+
+/* ===== SECTION PROJETOS/RANKING ===== */
+
+
+/* ======= CONFIGURAÇÕES GERAIS ======= */
+section.ranking {
+  padding: 80px 4%;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 40px 10px #ffffff17;
+  background-color: #0b0b0b;
+}
+
+section.ranking h2 {
+  font-size: 2.5em;
+  margin-bottom: 60px;
+  text-shadow: 0 0 10px #ff002b;
+}
+
+/* ======= TOPO: 3 DESTAQUES ======= */
+.ranking-top3 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+.pessoa.destaque {
+  width: 300px;
+  text-align: center;
+}
+
+.pessoa.destaque img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ff002b;
+  box-shadow: 0 0 20px #ff002b99;
+}
+
+.pessoa.destaque h3 {
+  margin: 15px 0 25px;
+  font-size: 1.4em;
+  color: #ffdadf;
+}
+
+/* ======= PROJETO DESTAQUE ======= */
+.projeto-destaque {
+  display: flex;
+  justify-content: center;
+}
+
+.img-port {
+  width: 260px;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+  box-shadow: 0 0 20px #ff002b44;
+}
+
+.img-port:hover {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: #000000b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 20px;
+}
+
+.img-port:hover .overlay {
+  opacity: 1;
+}
+
+/* ======= CARROSSEL ======= */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+  margin: 0 auto;
+  padding: 40px 60px; /* espaço lateral para as setas ficarem fora das fotos */
+}
+
+.carousel-track {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* oculta barra firefox */
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none; /* oculta barra chrome */
+}
+
+/* ======= FOTOS ======= */
+.foto {
+  flex: 0 0 120px;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.foto span {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.foto:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px #ff002b88;
+}
+
+.foto:hover span {
+  bottom: 10px;
+  opacity: 1;
+}
+
+/* ======= BOTÕES DE NAVEGAÇÃO ======= */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #000000b8;
+  border: none;
+  color: #fff;
+  font-size: 28px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background-color: #ff002b;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-container:hover .carousel-btn {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Posicionamento ajustado: fora do conteúdo */
+.carousel-btn.prev {
+  left: 5px;
+}
+
+.carousel-btn.next {
+  right: 5px;
+}
+
+
+/* ===== SECTION COLABORADORES ===== */
+
+section.colaboradores {
+  padding: 80px 5%;
+  text-align: center;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1b1b1b 100%);
+  color: #FF00FF;
+  
+  box-shadow: 0 0 25px #ff002b33;
+}
+
+section.colaboradores h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 12px #ff002b;
+}
+
+section.colaboradores p {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 60px;
+}
+
+/* GRID */
+.colaboradores-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* CARD */
+.colaborador {
+  width: 250px;
+  background: #111;
+  border-radius: 15px;
+  
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.colaborador:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px #00FFFF;
+}
+
+/* FOTO */
+.colaborador img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+/* INFO */
+.colaborador-info {
+  padding: 20px;
+  background-color: #0e0e0e;
+}
+
+.colaborador-info h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #4B0082;
+  text-shadow: 0 0 8px #ff002b55;
+}
+
+.colaborador-info p {
+  font-size: 0.95rem;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+/* REDES SOCIAIS */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #1a1a1a;
+  color: #ff002b;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px #ff002b33;
+}
+
+.social-links a:hover {
+  background-color: #ff002b;
+  color: #fff;
+  transform: scale(1.15);
+  box-shadow: 0 0 12px #ff002b;
+}
+
+/* Esconde ícones se não houver link (ex: cadastro vazio) */
+.social-links a[href="#"] {
+  display: none;
+}
+
+
+/* ===== FOOTER ===== */
+
+footer.footer {
+  background: linear-gradient(180deg, #0a0a0a 0%, #1b1b1b 100%);
+  color: #fff;
+  padding: 60px 8% 30px;
+  
+  box-shadow: 0 0 25px #ff002b33;
+}
+
+/* CONTAINER PRINCIPAL */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* COLUNAS */
+.footer-col {
+  flex: 1 1 250px;
+  min-width: 250px;
+}
+
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #FF00FF;
+  text-shadow: 0 0 10px #ff002b;
+}
+
+.footer-col p {
+  color: #ccc;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+/* LINKS RÁPIDOS */
+.footer-col h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #4B0082;
+  text-shadow: 0 0 8px #ff002b66;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin: 10px 0;
+}
+
+.footer-col ul li a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #00FFFF;
+  text-shadow: 0 0 8px #00FFFF;
+}
+
+/* REDES SOCIAIS */
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  color: #ff002b;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px #ff002b33;
+}
+
+.social-links a:hover {
+  background: #00FFFF;
+  color: #fff;
+  transform: scale(1.15);
+  box-shadow: 0 0 12px #ff002b;
+}
+
+/* E-MAIL */
+.footer-email {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+/* RODAPÉ INFERIOR */
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #ff002b33;
+  padding-top: 15px;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}

@@ -1,0 +1,435 @@
+/* ======== CORES GERAIS ======== */
+body {
+  background-color: #000; /* fundo preto */
+  color: #fff;
+  
+  margin: 0;
+  padding: 0;
+}
+
+/* ======== TOPO ======== */
+header {
+ background-color: #1a1a1a; /* cinza escuro */
+  padding: 10px 20px;
+}
+
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ======== LOGO ======== */
+.inicio-btn img {
+  width: 100px;           /* mais largo */
+  max-height: 60px;       /* controla a altura */
+  object-fit: contain;    /* evita distorção */
+  image-rendering: auto;  /* mantém nitidez */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.inicio-btn img:hover {
+  transform: scale(1.05); /* leve zoom no hover */
+}
+
+/* ======== BOTÕES ======== */
+.header-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.header-buttons a {
+  text-decoration: none;
+}
+
+.header-buttons button {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 8px 18px;
+  margin-left: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Efeito hover */
+.header-buttons button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Botão ativo (Corporações selecionado) */
+.header-buttons .ativo {
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+}
+
+
+/* ======== HERO SECTION ======== */
+.hero {
+  background-image:url("../../../images/imagem_background-empresas.png"); /* substitua pela sua imagem */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 120px 20px; /* altura da seção */
+  position: relative;
+}
+
+/* Escurecer o fundo com gradiente */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  color: #e0e0e0;
+}
+
+/* ======== BOTÃO ======== */
+.btn-explore {
+  background-color: #fff;
+  color: #000;
+  padding: 12px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.btn-explore:hover {
+  background-color: #00FFFF;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* ======== SECTION POR QUE SER PARCEIRO ======== */
+.por-que-ser-parceiro {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #000; /* fundo preto */
+}
+
+.por-que-ser-parceiro h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.por-que-ser-parceiro p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+/* ======== CONTAINER DOS BENEFÍCIOS ======== */
+.beneficios {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* ======== CADA BLOCO ======== */
+.beneficio {
+  border: 2px solid #fff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  width: 300px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.beneficio:hover {
+  transform: translateY(-10px);
+  border-color: #4B0082; /* destaque no hover */
+}
+
+.beneficio img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+  object-fit: contain;
+}
+
+.beneficio h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.beneficio p {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.5;
+}
+
+/* ======== SECTION PARCERIAS ======== */
+.parcerias {
+  background-color: #000;
+  color: #fff;
+  padding: 100px 20px;
+}
+
+.parcerias h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 60px;
+  font-weight: 700;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Cada bloco de parceria */
+.parceria-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto 60px auto;
+  flex-wrap: wrap; /* mantém responsivo */
+}
+
+/* Imagem à esquerda */
+.parceria-item img {
+  width: 400px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+/* Texto à direita */
+.parceria-texto {
+  max-width: 500px;
+  text-align: left;
+   font-family: 'Orbitron', sans-serif;
+}
+
+.parceria-texto h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+   font-family: 'Orbitron', sans-serif;
+}
+
+.parceria-texto p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* ======== EFEITO DE HOVER ======== */
+.parceria-item:hover img {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .parceria-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .parceria-texto {
+    text-align: center;
+  }
+
+  .parceria-item img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ======== SECTION CTA PARCERIA ======== */
+.cta-parceria {
+  background-color: #111; /* levemente diferente do fundo preto para destaque */
+  text-align: center;
+  padding: 100px 20px;
+  color: #fff;
+}
+
+.cta-parceria h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+   font-family: 'Orbitron', sans-serif;
+  margin-bottom: 20px;
+}
+
+.cta-parceria p {
+  font-size: 1.2rem;
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  line-height: 1.6;
+}
+
+/* Botão de contato */
+.btn-contato {
+  display: inline-block;
+  background-color: #4B0082;
+  color: #000;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-weight: 600;
+    font-family: 'Orbitron', sans-serif;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-contato:hover {
+  background-color: #fff;
+  transform: scale(1.05);
+}
+
+/* ======== FOOTER ======== */
+.site-footer {
+  background-color: #000;
+  padding: 20px 40px;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Linha separadora sutil */
+.footer-separator {
+  border-top: 1px solid #222;
+  margin-bottom: 20px;
+}
+
+/* Wrapper do conteúdo */
+.footer-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* LOGO À ESQUERDA */
+.footer-logo a img {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo a:hover img {
+  transform: scale(1.05);
+}
+
+/* CENTRO: LINKS + COPYRIGHT */
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centraliza horizontalmente */
+  text-align: center;  /* centraliza o texto */
+  width: 100%;         /* garante que ocupe toda a largura disponível */
+}
+
+/* LINKS INSTITUCIONAIS */
+.footer-links {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 80px; /* espaço entre links e copyright */
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #4B0082;
+}
+
+/* DIREITOS AUTORAIS */
+.footer-copy {
+  color: #777;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-align: center;  /* centraliza o texto */
+  width: 100%;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .footer-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .footer-links {
+    gap: 15px;
+  }
+}
+
+
+
+
+/* Botão voltar ao topo */
+.btn-topo {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #00FFFF;
+  color: #000;
+  font-size: 28px;      /* tamanho da seta */
+  font-weight: 900;     /* deixa a seta mais grossa */
+  text-decoration: none;
+  padding: 12px;         /* ajusta o tamanho do quadrado */
+  border-radius: 0;      /* remove arredondamento */
+  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-topo:hover {
+  background-color: #fff;
+  transform: scale(1.1);
+}
+
+

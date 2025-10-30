@@ -1,0 +1,388 @@
+/* ===== BODY E RESET ===== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #fff;
+}
+
+/* ===== HEADER ===== */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 10px 20px; /* já existe */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 1000;
+  box-sizing: border-box; /* garante que o padding não quebre layout */
+}
+.admin-header .logo img {
+  height: 50px;
+  filter:
+        drop-shadow(0 0 10px rgba(0, 255, 255, 0.6))
+        drop-shadow(0 0 10px rgba(255, 0, 255, 0.6))
+        drop-shadow(0 0 5px rgba(0, 255, 255, 0.8))
+        drop-shadow(0 0 5px rgba(255, 0, 255, 0.8));
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px; /* distância da borda / barra de rolagem */
+}
+
+.user-info .user-photo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 220px;
+  background-color: #1f1f1f;
+  position: fixed;
+  top: 70px;            /* inicia abaixo do header */
+  left: 0;
+  bottom: 0;
+  padding-top: 20px;    /* ajuste se necessário */
+  z-index: 999;         /* abaixo do header */
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  padding: 15px 20px;
+  cursor: pointer;
+  color: #ccc;
+  transition: 0.3s;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background-color: #333;
+  color: #0ff;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+  margin-left: 220px;  /* largura da sidebar */
+  margin-top: 70px;    /* altura do header */
+  padding: 20px;
+}
+
+.content-section {
+  display: none;
+}
+
+.content-section h2 {
+  margin-top: 0;
+}
+
+/* ===== CARDS DASHBOARD ===== */
+.cards-container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: #1f1f1f;
+  padding: 15px;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.card h3 {
+  margin: 0 0 5px 0;
+}
+
+.valor {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.variacao {
+  font-size: 14px;
+  color: #0ff;
+}
+
+/* ===== GRAFICOS DASHBOARD ===== */
+.engajamento-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.grafico-card {
+  background-color: #1f1f1f;
+  padding: 15px;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 250px;
+}
+
+/* ===== FORMULÁRIO PROJETOS ===== */
+.form-projeto {
+  background-color: #1f1f1f;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-projeto input,
+.form-projeto select,
+.form-projeto textarea {
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.form-projeto button {
+  padding: 10px;
+  background-color: #0ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ===== LISTA DE PROJETOS ===== */
+.lista-projetos .projeto-card {
+  background-color: #1f1f1f;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.projeto-botoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.projeto-botoes button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-editar {
+  background-color: #0ff;
+  color: #000;
+}
+
+.btn-deletar {
+  background-color: #f00;
+  color: #fff;
+}
+
+/* ===== MODAL CONFIRMAÇÃO ===== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right:0;
+  bottom:0;
+  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #1f1f1f;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.modal-buttons button {
+  padding: 5px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== DISCÍPULO ===== */
+.discipulo-pesquisa {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.discipulo-pesquisa input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.discipulo-pesquisa button {
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: #0ff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Lista de resultados */
+#listaResultados {
+  background-color: #1f1f1f;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.item-discipulo {
+  display: flex;
+  gap: 10px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.item-discipulo:hover {
+  background-color: #333;
+}
+
+.item-discipulo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ===== DETALHES DISCÍPULO ===== */
+#resultadoDiscipulo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #1f1f1f;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Linha superior: foto + dados */
+.dados-linha {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.foto-discipulo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dados-discipulo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Container do gráfico centralizado abaixo da linha de dados */
+.grafico-container {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#graficoProjetosDiscipulo {
+  width: 100% !important;
+  height: auto !important;
+}
+
+#textoPorcentagem {
+  margin-top: 5px;
+  color: #0ff;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Botões centralizados abaixo do gráfico */
+.botoes-discipulo {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.botoes-discipulo button {
+  padding: 5px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.botoes-discipulo .btn-editar-dados {
+  background-color: #0ff;
+  color: #000;
+}
+
+.botoes-discipulo .btn-deletar-discipulo {
+  background-color: #f00;
+  color: #fff;
+}
+
+/* ===== CANVAS ===== */
+canvas {
+  max-width: 100%;
+  height: auto !important;
+}
+
+/* ===== RESPONSIVO ===== */
+@media(max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+
+  .dados-linha {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .grafico-container {
+    max-width: 80%;
+  }
+}

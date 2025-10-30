@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Admin</title>
+  <link rel="stylesheet" href="admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="admin-header">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo InfinityVerse">
+    </div>
+    <div class="user-info">
+      <span class="user-name">Nome do Usuário</span>
+      <img class="user-photo" src="images/user-placeholder.png" alt="Foto do Usuário">
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <ul class="menu">
+      <li class="menu-item active" data-section="dashboard">Dashboard</li>
+      <li class="menu-item" data-section="projetos">Projetos</li>
+      <li class="menu-item" data-section="discipulo">Discípulo</li>
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="content-section" style="display:block;">
+      <h2>Dashboard</h2>
+      <div class="cards-container">
+        <div class="card">
+          <h3>Total de Usuários</h3>
+          <p class="valor" id="totalUsuarios">0</p>
+          <p class="variacao" id="variacaoUsuarios">+0%</p>
+        </div>
+        <div class="card">
+          <h3>Projetos Ativos</h3>
+          <p class="valor" id="projetosAtivos">0</p>
+          <p class="variacao" id="variacaoProjetos">+0%</p>
+        </div>
+        <div class="card">
+          <h3>Novos Cadastros</h3>
+          <p class="valor" id="novosCadastros">0</p>
+          <p class="variacao" id="variacaoCadastros">+0%</p>
+        </div>
+      </div>
+
+      <h3 class="subtitulo">Engajamento do Usuário</h3>
+      <div class="engajamento-container">
+        <div class="grafico-card">
+          <h4>Usuários Ativos Semanais</h4>
+          <canvas id="graficoSemanal"></canvas>
+        </div>
+        <div class="grafico-card">
+          <h4>Taxa de Conclusão de Projetos</h4>
+          <canvas id="graficoMensal"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projetos" class="content-section">
+      <h2>Gerenciador de Projetos</h2>
+      <div id="listaProjetos" class="lista-projetos"></div>
+
+      <form id="formProjeto" class="form-projeto">
+        <h3 id="formTitle">Criar Novo Projeto</h3>
+        <input type="text" id="nomeProjeto" placeholder="Nome do Projeto" required>
+        <select id="categoriaProjeto" required>
+          <option value="">Selecione a categoria</option>
+          <option value="programacao">Programação</option>
+          <option value="design">Design</option>
+          <option value="marketing">Marketing</option>
+          <option value="fotografia">Fotografia</option>
+        </select>
+        <textarea id="descricaoProjeto" placeholder="Descrição do projeto" required></textarea>
+        <label for="arquivoProjeto">Escolher Arquivo (PDF ou DOCX)</label>
+        <input type="file" id="arquivoProjeto" accept=".pdf,.doc,.docx">
+        <span id="nomeArquivo">Nenhum arquivo escolhido</span>
+        <button type="submit" class="btn-adicionar">Salvar Projeto</button>
+      </form>
+    </section>
+
+    <!-- DISCÍPULO -->
+    <section id="discipulo" class="content-section">
+      <h2>Área de Discípulos</h2>
+
+      <!-- Campo de pesquisa -->
+      <div class="discipulo-pesquisa">
+        <input type="text" id="inputBuscaDiscipulo" placeholder="Digite o nome do discípulo...">
+        <button id="btnBuscarDiscipulo" class="btn-pesquisar">Pesquisar</button>
+      </div>
+
+      <!-- Lista de resultados clicáveis -->
+      <div id="listaResultados" class="lista-resultados" style="display:none;">
+        <ul id="resultadosDiscipulos"></ul>
+      </div>
+
+      <!-- Detalhes do discípulo -->
+      <div id="resultadoDiscipulo" class="discipulo-info" style="display:none;">
+        <!-- Linha superior: foto + dados -->
+        <div class="dados-linha">
+          <img id="fotoDiscipulo" class="foto-discipulo" src="" alt="Foto do Discípulo">
+          <div class="dados-discipulo">
+            <h3 id="nomeDiscipulo">Nome do Discípulo</h3>
+            <p id="cursoDiscipulo">Curso: -</p>
+            <p id="projetosDiscipulo">Projetos: -</p>
+          </div>
+        </div>
+
+        <!-- Gráfico -->
+        <div class="grafico-container">
+          <h4>Desempenho em Projetos</h4>
+          <canvas id="graficoProjetosDiscipulo"></canvas>
+          <p id="textoPorcentagem" class="porcentagem-info"></p>
+        </div>
+
+        <!-- Botões -->
+        <div class="botoes-discipulo">
+          <button class="btn-editar-dados">Editar dados</button>
+          <button class="btn-deletar-discipulo">Deletar discípulo</button>
+        </div>
+      </div>
+
+      <!-- Formulário para editar dados do discípulo -->
+      <form id="formEditarDiscipulo" class="form-projeto" style="display:none; margin-top:20px;">
+        <h3>Editar Discípulo</h3>
+        <input type="text" id="editarNome" placeholder="Nome" required>
+        <input type="text" id="editarCurso" placeholder="Curso" required>
+        <input type="text" id="editarTelefone" placeholder="Telefone">
+        <input type="email" id="editarEmail" placeholder="Email">
+        <button type="submit" class="btn-adicionar">Salvar Alterações</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- MODAL DE CONFIRMAÇÃO -->
+  <div id="confirmModal" class="modal-overlay" style="display:none;">
+    <div class="modal-content">
+      <p id="confirmText">Tem certeza que deseja deletar este projeto?</p>
+      <div class="modal-buttons">
+        <button id="btnSim" class="btn-sim">Sim</button>
+        <button id="btnNao" class="btn-nao">Não</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Supabase JS Client v2 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="admin.js"></script>
+</body>
+</html>

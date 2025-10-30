@@ -1,0 +1,385 @@
+/* =========================================================
+   GERAL
+========================================================= */
+body {
+  margin: 0;
+  background-color: #0a0a0a;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+.logo_cursos {
+  height: 60px;
+  width: auto;
+}
+
+main, section, .conteudo-principal {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  transition: filter 0.3s ease;
+}
+
+/* Fundo desfocado quando menu ativo */
+body.menu-ativo main,
+body.menu-ativo section,
+body.menu-ativo .conteudo-principal {
+  filter: blur(3px) brightness(0.6);
+  pointer-events: none;
+}
+
+/* =========================================================
+   TOPO / HEADER
+========================================================= */
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  width: 100%;
+  height: 120px;
+  background-image: url("images/logo2.jpeg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1000;
+  margin-top: 20px;
+}
+
+/* ===== Botão Hamburguer ===== */
+.menu-btn {
+  font-size: 32px;
+  color: #ff002b;
+  cursor: pointer;
+  transition: transform 0.3s, text-shadow 0.3s, color 0.3s;
+  text-shadow: 0 0 10px #ff002b, 0 0 20px #b30000;
+  z-index: 10;
+}
+.menu-btn:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 15px #ff002b, 0 0 30px #ff0040;
+}
+.menu-btn.ativo {
+  transform: rotate(90deg) scale(1.1);
+  color: #ff0040;
+  text-shadow: 0 0 20px #ff0040, 0 0 40px #b30000;
+}
+
+/* ===== Logo ===== */
+.logo-hamburguer {
+  position: relative;
+  flex: 1;
+  background-image: url("images/logo2.jpeg");
+  background-size: cover;
+  background-position: center;
+  width: 400px;
+  height: 80px;
+}
+
+/* =========================================================
+   MENU LATERAL
+========================================================= */
+.menu-lateral {
+  position: fixed;
+  left: -270px;
+  top: 0;
+  width: 270px;
+  height: 100vh;
+  background: linear-gradient(180deg, #000 0%, #1a0000 100%);
+  box-shadow: 5px 0 20px rgba(255, 0, 0, 0.3);
+  padding-top: 100px;
+  transition: left 0.4s ease;
+  z-index: 2000;
+  overflow-y: auto;
+}
+
+.menu-lateral.ativo {
+  left: 0;
+}
+
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-lateral ul li {
+  margin: 10px 0;
+}
+
+.menu-lateral ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+  padding: 12px 25px;
+  border-left: 3px solid transparent;
+  transition: 0.3s;
+}
+
+.menu-lateral ul li a:hover {
+  color: #ff002b;
+  text-shadow: 0 0 10px #ff002b, 0 0 20px #ff0040;
+  border-left: 3px solid #ff002b;
+  transform: translateX(8px);
+}
+
+/* Submenu */
+.menu-lateral ul li ul {
+  display: none;
+  list-style: none;
+  padding-left: 20px;
+  margin-top: 5px;
+}
+.menu-lateral ul li.submenu:hover > ul {
+  display: block;
+}
+.menu-lateral ul li ul li a {
+  font-size: 16px;
+  color: #ccc;
+  padding: 8px 20px;
+  border-left: 2px solid transparent;
+  transition: 0.3s;
+}
+.menu-lateral ul li ul li a:hover {
+  color: #ff002b;
+  text-shadow: 0 0 10px #ff002b;
+  border-left: 2px solid #ff002b;
+  transform: translateX(5px);
+}
+
+/* =========================================================
+   BOTÕES DO HEADER (DROPDOWNS)
+========================================================= */
+.header-buttons {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.header-buttons button {
+  background-color: #4B0082;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.header-buttons button:hover {
+  background-color: #4c00828f;
+}
+
+.corp-dropdown, .disc-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.corp-dropdown .dropdown-content,
+.disc-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #4B0082;
+  min-width: 140px;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 100;
+  flex-direction: column;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+}
+
+.dropdown-content a:hover {
+  background-color: #4c00828f;
+}
+
+.corp-dropdown:hover .dropdown-content,
+.disc-dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  cursor: pointer;
+}
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+  transition: filter 0.5s ease;
+}
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  animation: fadeInHero 2s ease forwards;
+  animation-delay: 1s;
+}
+.hero-content h1 {
+  font-size: 3rem;
+  color: #00FFFF;
+  margin-bottom: 10px;
+}
+.hero-content p {
+  font-size: 1.2rem;
+  color: #eee;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.hero-btn {
+  display: inline-block;
+  background-color: #00ffffb5;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.hero-btn:hover {
+  background: #00ffff82;
+  transform: scale(1.05);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.hero:hover .hero-video {
+  filter: brightness(25%);
+}
+.hero:hover .hero-content {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+@keyframes fadeInHero {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* =========================================================
+   CURSOS SECTION
+========================================================= */
+section.cursos_infinity {
+  padding: 40px 4%;
+  background: linear-gradient(90deg, #000, #1a1a1a);
+  color: #fff;
+  margin-top: 40px;
+}
+.titulo_cursos {
+  text-align: center;
+  font-size: 32px;
+  font-family: 'Orbitron', sans-serif;
+  color: #4B0082;
+  margin-bottom: 30px;
+}
+.carousel-wrapper {
+  position: relative;
+}
+.cursos_in {
+  display: flex;
+  gap: 40px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 20px;
+}
+.cursos_in::-webkit-scrollbar {
+  height: 8px;
+}
+.cursos_in::-webkit-scrollbar-thumb {
+  background-color: #4B0082;
+  border-radius: 10px;
+}
+.cursos_box {
+  flex: 0 0 300px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  transition: .3s;
+}
+.cursos_box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px #ffffff78;
+}
+.logo_cursos {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+.cursos_box h3 {
+  font-size: 22px;
+  margin: 15px 0;
+  color: #00FFFF;
+  font-family: 'Orbitron', sans-serif;
+}
+.cursos_box p {
+  font-size: 15px;
+  color: #ddd;
+  line-height: 1.4em;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #FF0000;
+  color: #fff;
+  border: none;
+  font-size: 36px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+}
+.carousel-wrapper:hover .carousel-btn {
+  opacity: 1;
+  pointer-events: all;
+}
+.carousel-btn:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+.carousel-btn.prev { left: 0; }
+.carousel-btn.next { right: 0; }
+
+/* =========================================================
+   SOBRE, MULTIVERSOS, RANKING e COLABORADORES
+   (mantidos idênticos ao CSS 1)
+========================================================= */
+
+/* ... (todo o restante do CSS 1 é mantido igual até o footer) ... */

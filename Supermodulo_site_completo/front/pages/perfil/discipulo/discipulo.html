@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<link rel="stylesheet" href="discipulo.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="inicio-btn">
+    <img src="../../../images/logo-sem-fundo.png" alt="Logo">
+  </a>
+  <div class="header-buttons">
+    <button class="corp ativo">Corporações</button>
+    <button class="disc" id="botao-discipulo"></button>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <h2>Projetos</h2>
+  <ul>
+    <li class="nivel-btn active" data-nivel="iniciante">Iniciante</li>
+    <li class="nivel-btn" data-nivel="intermediario">Intermediário</li>
+    <li class="nivel-btn" data-nivel="avancado">Avançado</li>
+    <li class="meus-projetos-btn">Meus Projetos</li>
+  </ul>
+</nav>
+
+<!-- CONTEÚDO -->
+<main class="conteudo">
+
+  <!-- SEÇÕES DE NÍVEIS -->
+  <section class="nivel-section" id="iniciante-section">
+    <h2>Iniciante</h2>
+    <div class="projetos-container" id="projetos-iniciante"></div>
+  </section>
+
+  <section class="nivel-section" id="intermediario-section" style="display:none;">
+    <h2>Intermediário</h2>
+    <div class="projetos-container" id="projetos-intermediario"></div>
+  </section>
+
+  <section class="nivel-section" id="avancado-section" style="display:none;">
+    <h2>Avançado</h2>
+    <div class="projetos-container" id="projetos-avancado"></div>
+  </section>
+
+  <!-- MEUS PROJETOS -->
+  <section class="meus-projetos-section" id="meus-projetos-section" style="display:none;">
+    <h2>Meus Projetos</h2>
+    <div class="meus-projetos-top">
+      <div class="quantidades">
+        <div>
+          <h3>Em andamento</h3>
+          <span id="qtd-andamento">0</span>
+        </div>
+        <div>
+          <h3>Concluídos</h3>
+          <span id="qtd-concluidos">0</span>
+        </div>
+        <div>
+          <h3>Disponíveis</h3>
+          <span id="qtd-disponiveis">0</span>
+        </div>
+      </div>
+      <div class="ranking-lado">
+        <h3>Ranking</h3>
+        <div id="ranking-container"></div>
+      </div>
+    </div>
+    <div class="projetos-container" id="projetos-meus"></div>
+  </section>
+
+  <!-- MODAL DE ENTREGA -->
+  <div id="modal-entrega" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h3>Entregar Projeto</h3>
+      <button data-tipo="github">GitHub</button>
+      <button data-tipo="instagram">Instagram</button>
+      <button data-tipo="arquivo">Arquivo</button>
+      <input type="text" id="link-entrega" placeholder="Coloque o link ou arquivo aqui">
+      <button id="confirmar-entrega">Confirmar</button>
+      <button id="fechar-modal">Fechar</button>
+    </div>
+  </div>
+
+</main>
+<!-- Supabase JS Client v2 -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="discipulo.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+/* ======== GERAL ======== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: URL("../../../images/imagem-background-login.png");
+}
+
+
+/* ======== CONTAINER ======== */
+.login-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 40px;
+  width: 350px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  
+}
+
+/* ======== LOGO ======== */
+.logo img {
+  width: 200px;        /* aumenta o tamanho da logo */
+  max-width: 200px;    /* impede que fique gigante em telas grandes */
+  height: auto;        /* mantém proporção */
+  margin-bottom: 15px;
+}
+
+/* ======== TÍTULO ======== */
+.login-container h2 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* ======== INPUTS ======== */
+.login-container input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 15px;
+}
+
+.login-container input::placeholder {
+  color: #ccc;
+}
+
+/* ======== LINK ESQUECEU SENHA ======== */
+.forgot-password {
+  display: block;
+  text-align: right;
+  margin-bottom: 10px;
+  color: #00bcd4;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.forgot-password:hover {
+  color: #0097a7;
+  text-decoration: underline;
+}
+
+/* ======== BOTÃO PRINCIPAL ======== */
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #00bcd4;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.login-container button:hover {
+  background: #0097a7;
+}
+
+/* ======== LOGIN SOCIAL ======== */
+.social-login {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.google-btn,
+.facebook-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+/* ======== GOOGLE ======== */
+.google-btn {
+  background: #fff;
+  color: #000;
+}
+
+.google-btn:hover {
+  background: #f0f0f0;
+}
+
+/* ======== FACEBOOK ======== */
+.facebook-btn {
+  background: #1877f2;
+  color: #fff;
+}
+
+.facebook-btn:hover {
+  background: #145dbf;
+}
+
+.social-login img {
+  width: 20px;
+  height: 20px;
+}
